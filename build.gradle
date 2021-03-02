@@ -22,9 +22,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url = "https://kotlin.bintray.com/kotlinx/"
-        }
+//        maven {
+//            url = "https://kotlin.bintray.com/kotlinx/"
+//        }
     }
 
     dependencies {
@@ -42,7 +42,7 @@ subprojects {
         google()
         mavenCentral()
         maven {
-            url = "https://kotlin.bintray.com/kotlinx/"
+            url = "https://plugins.gradle.org/m2/"
         }
     }
 
