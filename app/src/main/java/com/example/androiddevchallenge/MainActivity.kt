@@ -23,8 +23,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -44,13 +44,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.common.detailView
-import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.common.listItem
-
+import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
 
-    val viewModel:MyViewModel by viewModels()
+    val viewModel: MyViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,14 +59,14 @@ class MainActivity : AppCompatActivity() {
                     Surface(color = MaterialTheme.colors.background) {
                         Box {
                             LazyColumn {
-                                items(viewModel.dogs.size) {index ->
+                                items(viewModel.dogs.size) { index ->
                                     listItem(viewModel.dogs.get(index)) {
                                         viewModel.index = index
                                         viewModel.showDetail()
                                     }
                                 }
                             }
-                            if(viewModel.isShowDetail) {
+                            if (viewModel.isShowDetail) {
                                 detailView(viewModel.dogs.get(viewModel.index))
                             }
                         }
@@ -81,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
         Log.i("jairus", "viewModel.isShowDetail.value = " + viewModel.isShowDetail)
 
-        if(viewModel.isShowDetail) {
+        if (viewModel.isShowDetail) {
             viewModel.hideDetail()
         } else {
             super.onBackPressed()
@@ -98,23 +97,20 @@ fun MyApp() {
         Surface(color = MaterialTheme.colors.background) {
             Box {
                 LazyColumn {
-                    items(viewModel.dogs.size) {index ->
+                    items(viewModel.dogs.size) { index ->
                         listItem(viewModel.dogs.get(index)) {
                             viewModel.index = index
                             viewModel.showDetail()
                         }
                     }
                 }
-                if(viewModel.isShowDetail) {
+                if (viewModel.isShowDetail) {
                     detailView(viewModel.dogs.get(viewModel.index))
                 }
             }
         }
     }
-
 }
-
-
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
@@ -126,16 +122,19 @@ fun LightPreview() {
     val viewModel: MyViewModel = MyViewModel()
     Box(
         Modifier
-        .background(Color.White)
-        .fillMaxSize()) {
+            .background(Color.White)
+            .fillMaxSize()
+    ) {
 
         Column {
-            Text(text = "1号小狗", color = Color.Black, fontSize = 30.sp,
+            Text(
+                text = "1号小狗", color = Color.Black, fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp, 0.dp, 0.dp, 0.dp))
+                    .padding(8.dp, 0.dp, 0.dp, 0.dp)
+            )
 
             Image(
                 painterResource(id = R.mipmap.dog_1),
@@ -148,13 +147,12 @@ fun LightPreview() {
                     .padding(20.dp)
             )
 
-            Text(text = "这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗", color = Color.DarkGray, fontSize = 14.sp,
+            Text(
+                text = "这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗这是一条狗", color = Color.DarkGray, fontSize = 14.sp,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(20.dp, 20.dp, 20.dp, 20.dp))
+                    .padding(20.dp, 20.dp, 20.dp, 20.dp)
+            )
         }
-
-
     }
 }
-
